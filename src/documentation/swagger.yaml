@@ -1,0 +1,185 @@
+openapi: 3.0.0
+info:
+  title: API de Imágenes
+  version: 1.0.0
+  description: Documentación de la API para obtener imágenes
+servers:
+- url: http://localhost:8080
+  description: Servidor local
+paths:
+  /get:
+    get:
+      summary: Obtiene una imagen basada en una consulta
+      description: Obtiene una imagen de una fuente externa basada en la consulta proporcionada. Debes proporcionar una consulta válida en la query.
+      parameters:
+      - in: query
+        name: query
+        schema:
+          type: string
+
+        description: Consulta para buscar la imagen. Ejemplo "paisajes", "gatos", etc.
+      responses:
+        200:
+          description: Imagen obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Número total de resultados
+                  totalHits:
+                    type: integer
+                    description: Número total de resultados que coinciden con la consulta
+                  hits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        pageURL:
+                          type: string
+                        type:
+                          type: string
+                        tags:
+                          type: string
+                        previewURL:
+                          type: string
+                        previewWidth:
+                          type: integer
+                        previewHeight:
+                          type: integer
+                        webformatURL:
+                          type: string
+                        webformatWidth:
+                          type: integer
+                        webformatHeight:
+                          type: integer
+                        largeImageURL:
+                          type: string
+                        imageWidth:
+                          type: integer
+                        imageHeight:
+                          type: integer
+                        imageSize:
+                          type: integer
+                        views:
+                          type: integer
+                        downloads:
+                          type: integer
+                        collections:
+                          type: integer
+                        likes:
+                          type: integer
+                        comments:
+                          type: integer
+                        user_id:
+                          type: integer
+                        user:
+                          type: string
+                        userImageURL:
+                          type: string
+              example:
+                total: 665
+                totalHits: 500
+                hits:
+                - id: 5476955
+                  pageURL: "https://pixabay.com/illustrations/mexico-hat-sombrero-the-culture-5476955/"
+                  type: "illustration"
+                  tags: "mexico, hat, sombrero"
+                  previewURL: "https://cdn.pixabay.com/photo/2020/08/10/06/53/mexico-5476955_150.png"
+                  previewWidth: 150
+                  previewHeight: 150
+                  webformatURL: "https://pixabay.com/get/g8db1ce36d59e8646feda0776d15853fdd658f3a082e72ea95e1382329780594dd559f267cb8b6f41219761193c9043f65d7484c97fe1e78547785017a4334e55_640.png"
+                  webformatWidth: 640
+                  webformatHeight: 640
+                  largeImageURL: "https://pixabay.com/get/g14455b93676c5f7c26f174c2886d99dac6aab44627bc670714b56b65f689ea570867b5e69443105f78084624f0ca8faa911c8c15e36c890c8fc0e1308d5bda6e_1280.png"
+                  imageWidth: 3600
+                  imageHeight: 3600
+                  imageSize: 1996235
+                  views: 9608
+                  downloads: 7590
+                  collections: 9
+                  likes: 34
+                  comments: 11
+                  user_id: 6314823
+                  user: "Vika_Glitter"
+                  userImageURL: "https://cdn.pixabay.com/user/2024/05/09/15-10-24-838_250x250.jpg"
+                - id: 1597583
+                  pageURL: "https://pixabay.com/vectors/dragon-green-hola-sign-spanish-1597583/"
+                  type: "vector/ai"
+                  tags: "dragon, green, hola"
+                  previewURL: "https://cdn.pixabay.com/photo/2016/08/16/10/18/dragon-1597583_150.png"
+                  previewWidth: 150
+                  previewHeight: 146
+                  webformatURL: "https://pixabay.com/get/geda42a24b23891769e7eea00fb4b2533be771576729a1b5eb0f547243e9100ae60266bb7d77e596479b79e6c251ab3ecffb1d7b742463f662763ab8001762ba7_640.png"
+                  webformatWidth: 640
+                  webformatHeight: 623
+                  largeImageURL: "https://pixabay.com/get/g1a6329dab3249ac2df7815c30fdfd71e240385c31e6945b942a8e37960ff465e547f63284c0c9093cb7388a7ead75e009bbd7f18f7dfe70eac246734a2f2f67a_1280.png"
+                  imageWidth: 1920
+                  imageHeight: 1870
+                  imageSize: 538758
+                  views: 75652
+                  downloads: 54880
+                  collections: 256
+                  likes: 223
+                  comments: 19
+                  user_id: 2641041
+                  user: "GraphicMama-team"
+                  userImageURL: "https://cdn.pixabay.com/user/2016/06/01/15-27-35-456_250x250.jpg"
+                - id: 7491775
+                  pageURL: "https://pixabay.com/photos/gartenbank-wood-orange-nature-gr%C3%BCn-7491775/"
+                  type: "photo"
+                  tags: "gartenbank, wood, orange"
+                  previewURL: "https://cdn.pixabay.com/photo/2022/10/01/15/51/gartenbank-7491775_150.jpg"
+                  previewWidth: 150
+                  previewHeight: 100
+                  webformatURL: "https://pixabay.com/get/g42f95da28c1324abe552cb5af8c23379921eaaf95239182423a075b27fcb64aa1dad7e3bf4ae7b447d44a303682e21a886be29a502ab805a1361e00199b4b348_640.jpg"
+                  webformatWidth: 640
+                  webformatHeight: 427
+                  largeImageURL: "https://pixabay.com/get/g56d5b8e275e03c40ecd4853ac6932dc3ac81be0f1eeb62e54b39353d3b84a35ccea115f0e468b4842f47c8809d7dfc1c6b8f082f2cc5ad0bcd84c03f6361b466_1280.jpg"
+                  imageWidth: 4158
+                  imageHeight: 2772
+                  imageSize: 3611570
+                  views: 13244
+                  downloads: 10108
+                  collections: 24
+                  likes: 57
+                  comments: 11
+                  user_id: 26798947
+                  user: "26798947"
+                  userImageURL: ""
+        400:
+          description: La consulta no fue proporcionada o es inválida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Debes proporcionar una consulta en la query."
+                  cause:
+                    type: string
+                    example: "Consulta vacía o inválida"
+        500:
+          description: Error al obtener los datos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Error interno del servidor"
+                  cause:
+                    type: string
+                    example: "Detalles del error"

@@ -1,0 +1,24 @@
+export const generatorUserError = (data) => {
+  return `Todos los campos son requeridos y deben ser validos 😱.
+      Lista de campos recibidos en la solicitud:
+      - first_name  : ${data.first_name}
+      - last_name   : ${data.last_name}
+      - email       : ${data.email}
+      - age         : ${data.age}
+      `;
+};
+
+export const generatorUserIdError = (id) => {
+  return `Se debe enviar un identificador valido 😱.
+      Valor recibido: ${id}
+    `;
+};
+
+export const generatorErrorQuery = () => {
+  return "se debe ingresar una querry";
+};
+
+export const errorGetData = (data) => {
+  return `error en el fetch de data ${data}
+`;
+};
