@@ -13,6 +13,9 @@ const PORT = process.env.PORT;
 app.use(cors());
 swaggerSetup(app);
 app.use("/", axiosRoute);
+app.use("/", (req, res) => {
+  res.send("hola mundo");
+});
 app.use(errorHandlerMiddleware);
 app.listen(PORT, () => {
   console.log(`App connected successfully. Listening on port ${PORT}`);
