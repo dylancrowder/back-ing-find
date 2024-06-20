@@ -1,9 +1,11 @@
 import axios from "axios";
+import dotenv from "dotenv";
 
+dotenv.config();
 const instance = axios.create({
   baseURL: "https://pixabay.com/api/",
   params: {
-    key: "44377298-c504e436869e1ece22be17c09",
+    key: process.env.KEY_API,
   },
 });
 
@@ -13,7 +15,7 @@ export default class AxiosController {
       const response = await instance.get("", {
         params: { q: query },
       });
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error.message);
     }

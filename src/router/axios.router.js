@@ -20,16 +20,28 @@ router.get("/get", async (req, res, next) => {
 
     const img = await AxiosController.getImg(query);
 
-    if (!img) {
+    console.log("esta es la respuesta ", img.status);
+    console.log("esta es la data", img.data.hits.length);
+    if (img.status === 200 && img.data.hits.length === 0) {
       throw CustomError.create({
-        name: "DataFetchError",
-        cause: errorGetData(query),
-        message: "No se encontraron datos para la consulta proporcionada.",
-        code: enumError.DATA_BASE_ERROR,
+        name: "ImgNotFound",
+        cause: errorGetData(img),
+        message: "No se encontraron imagenes con este nombre.",
+        code: enumError.BAD_REQUEST_ERROR,
       });
     }
 
-    res.status(200).json(img);
+    const response = img.data;
+    if (!response) {
+      throw CustomError.create({
+        name: "DataFetchError",
+        cause: errorGetData(img),
+        message: "No se encontraron datos para la consulta proporcionada.",
+        code: enumError.INVALID_PARAMS_ERROR,
+      });
+    }
+
+    res.status(200).json(response);
   } catch (error) {
     next(error);
   }
