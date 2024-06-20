@@ -10,7 +10,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 swaggerSetup(app);
 app.use("/", axiosRoute);
 app.use("/", (req, res) => {
