@@ -19,8 +19,10 @@ app.use(
 app.use(cookieParser());
 swaggerSetup(app);
 app.use("/", axiosRoute);
-res.cookie("cookieName", "cookieValue", { sameSite: "None", secure: true });
-res.send("Cookie establecida correctamente");
+app.get("/", (req, res) => {
+  res.cookie("cookieName", "cookieValue", { sameSite: "None", secure: true });
+  res.send("Cookie establecida correctamente");
+});
 app.use(errorHandlerMiddleware);
 app.listen(PORT, () => {
   console.log(`App connected successfully. Listening on port ${PORT}`);
