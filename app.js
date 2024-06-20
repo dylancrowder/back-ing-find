@@ -4,7 +4,7 @@ import cors from "cors";
 import { errorHandlerMiddleware } from "./src/error/middlewareError.js";
 import swaggerSetup from "./src/documentation/swagger.js";
 import dotenv from "dotenv";
-
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
@@ -16,6 +16,7 @@ app.use(
     credentials: true,
   })
 );
+app.use(cookieParser());
 swaggerSetup(app);
 app.use("/", axiosRoute);
 app.use("/", (req, res) => {
