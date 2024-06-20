@@ -12,16 +12,15 @@ const PORT = process.env.PORT;
 
 app.use(
   cors({
-    origin: "*",
+    origin: true,
     credentials: true,
   })
 );
 app.use(cookieParser());
 swaggerSetup(app);
 app.use("/", axiosRoute);
-app.use("/", (req, res) => {
-  res.send("hola mundo");
-});
+res.cookie("cookieName", "cookieValue", { sameSite: "None", secure: true });
+res.send("Cookie establecida correctamente");
 app.use(errorHandlerMiddleware);
 app.listen(PORT, () => {
   console.log(`App connected successfully. Listening on port ${PORT}`);
